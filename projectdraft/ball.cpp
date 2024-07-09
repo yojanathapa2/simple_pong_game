@@ -12,7 +12,6 @@ Ball::Ball(float posX, float posY, int spdX, int spdY, int rad)
 
 void Ball::Draw()
 {
-    DrawCircle(x, y, radius + 2, WHITE);
     DrawCircle(x, y, radius, Yellow);
 }
 
@@ -45,8 +44,8 @@ void Ball::ResetBall()
     y = GetScreenHeight() / 2;
 
     int speed_choices[2] = { 1, -1 };
-    speed_x = 5 * speed_choices[GetRandomValue(0, 1)]; // Adjusted ball speed
-    speed_y = 5 * speed_choices[GetRandomValue(0, 1)]; // Adjusted ball speed
+    speed_x = 7 * speed_choices[GetRandomValue(0, 1)]; // Adjusted ball speed
+    speed_y = 7 * speed_choices[GetRandomValue(0, 1)]; // Adjusted ball speed
 }
 
 

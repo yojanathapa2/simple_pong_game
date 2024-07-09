@@ -19,7 +19,7 @@ bool Menu::CheckExitButtonClick() {
     return exitButton.clicked;
 }
 
-
-
-
-
+void Menu::ResetButtons() {
+    resumeButton.clicked = false;
+    exitButton.clicked = false;
+}

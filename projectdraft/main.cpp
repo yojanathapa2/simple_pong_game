@@ -42,9 +42,9 @@ int main()
 
     // Load sound effect
     InitAudioDevice();  // Initialize audio device
-    Sound hitSound = LoadSound("assets/sound.ogg");
+    Sound hitSound = LoadSound("sound.ogg");
 
-    Ball ball(screen_width / 2, screen_height / 2, 5, 5, 20);
+    Ball ball(screen_width / 2, screen_height / 2, 7, 7, 20);
     Paddle player(screen_width - 35, screen_height / 2 - 60, 25, 120, 6);
     CpuPaddle cpu(10, screen_height / 2 - 60, 25, 120, 6);
 
@@ -171,6 +171,7 @@ int main()
             if (IsKeyPressed(KEY_SPACE))
             {
                 Paused = !Paused;
+                menu.ResetButtons(); // Reset the buttons each time the game is paused
             }
 
             if (!Paused && !game_over)
@@ -199,11 +200,11 @@ int main()
                 }
 
                 // Check win conditions
-                if (player_score >= 10)
+                if (player_score >= 3)
                 {
                     game_over = true;
                 }
-                else if (computer_score >= 10)
+                else if (computer_score >= 3)
                 {
                     game_over = true;
                 }
@@ -262,10 +263,29 @@ int main()
                 int playAgainTextWidth = MeasureText(playAgainText, 20);
                 int exitTextWidth = MeasureText(exitText, 20);
 
-                DrawText(gameOverText, screen_width / 2 - gameOverTextWidth / 2, screen_height / 2 - 50, 40, BLACK);
-                DrawText(winnerText, screen_width / 2 - winnerTextWidth / 2, screen_height / 2, 30, BLACK);
-                DrawText(playAgainText, screen_width / 2 - playAgainTextWidth / 2, screen_height / 2 + 50, 20, BLACK);
-                DrawText(exitText, screen_width / 2 - exitTextWidth / 2, screen_height / 2 + 100, 20, BLACK);
+                int buttonWidth = 300;
+                int buttonHeight = 50;
+                int spacing = 20; // Add spacing between buttons
+
+                // Calculate the y-positions for each button dynamically based on button heights
+                int gameOverButtonY = screen_height / 2 - (buttonHeight * 2 + 15);
+                int winnerButtonY = gameOverButtonY + buttonHeight + 10;
+                int playAgainButtonY = winnerButtonY + buttonHeight + 10;
+                int exitButtonY = playAgainButtonY + buttonHeight + 10;
+
+                // Draw buttons with text centered
+                DrawRectangle(screen_width / 2 - buttonWidth / 2, gameOverButtonY, buttonWidth, buttonHeight, CUSTOM_RED);
+                DrawText(gameOverText, screen_width / 2 - gameOverTextWidth / 2, gameOverButtonY + (buttonHeight / 2) - 20, 40, BLACK);
+
+                DrawRectangle(screen_width / 2 - buttonWidth / 2, winnerButtonY, buttonWidth, buttonHeight, CUSTOM_RED);
+                DrawText(winnerText, screen_width / 2 - winnerTextWidth / 2, winnerButtonY + (buttonHeight / 2) - 15, 30, BLACK);
+
+                DrawRectangle(screen_width / 2 - buttonWidth / 2, playAgainButtonY, buttonWidth, buttonHeight, CUSTOM_RED);
+                DrawText(playAgainText, screen_width / 2 - playAgainTextWidth / 2, playAgainButtonY + (buttonHeight / 2) - 10, 20, CUSTOM_WHITE);
+
+                DrawRectangle(screen_width / 2 - buttonWidth / 2, exitButtonY, buttonWidth, buttonHeight, CUSTOM_RED);
+                DrawText(exitText, screen_width / 2 - exitTextWidth / 2, exitButtonY + (buttonHeight / 2) - 10, 20, CUSTOM_WHITE);
+
 
                 if (IsKeyPressed(KEY_ENTER))
                 {

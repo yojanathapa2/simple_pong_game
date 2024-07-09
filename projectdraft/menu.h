@@ -47,6 +47,7 @@ public:
     void Draw();
     bool CheckResumeButtonClick();
     bool CheckExitButtonClick();
+    void ResetButtons(); // Add this method
 
 private:
     Button resumeButton;
@@ -54,7 +55,3 @@ private:
 };
 
 #endif // MENU_H
-
-
-
-    
