@@ -200,11 +200,11 @@ int main()
                 }
 
                 // Check win conditions
-                if (player_score >= 5)
+                if (player_score >= 10)
                 {
                     game_over = true;
                 }
-                else if (computer_score >= 5)
+                else if (computer_score >= 10)
                 {
                     game_over = true;
                 }
