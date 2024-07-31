@@ -200,11 +200,11 @@ int main()
                 }
 
                 // Check win conditions
-                if (player_score >= 3)
+                if (player_score >= 5)
                 {
                     game_over = true;
                 }
-                else if (computer_score >= 3)
+                else if (computer_score >= 5)
                 {
                     game_over = true;
                 }
@@ -248,11 +248,7 @@ int main()
             // Display game over message and options
             if (game_over)
             {
-                /*DrawText("GAME OVER", screen_width / 2 - 150, screen_height / 2 - 50, 40, WHITE);
-                DrawText(TextFormat("%s WON!", (player_score >= 10) ? player_name.c_str() : cpu_name.c_str()), screen_width / 2 - 150, screen_height / 2, 30, WHITE);
-
-                DrawText("Press Enter to Play Again", screen_width / 2 - 200, screen_height / 2 + 50, 20, WHITE);
-                DrawText("Press Esc to Exit", screen_width / 2 - 150, screen_height / 2 + 100, 20, WHITE);*/
+               
                 const char* gameOverText = "GAME OVER";
                 const char* winnerText = TextFormat("%s WON!", (player_score >= 10) ? player_name.c_str() : cpu_name.c_str());
                 const char* playAgainText = "Press Enter to Play Again";
